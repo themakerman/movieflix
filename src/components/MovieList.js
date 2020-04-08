@@ -5,13 +5,16 @@ const MovieList = ({ queryRequest, search, movieSelectedId }) => {
     const resources = useResources(queryRequest);
     if(resources.length>1) {
         return (
-            <ol>
-                {resources.map((record) => 
-                    <li onClick={(e) => movieSelectedId(e.target.dataset['item'])} key={record.id} data-item={record.id}>
-                        {record.title}
-                    </li>
-                )} 
-            </ol>
+            <div>
+                <h1>Movies</h1>
+                <ol>
+                    {resources.map((record) => 
+                        <li onClick={(e) => movieSelectedId(e.target.dataset['item'])} key={record.id} data-item={record.id}>
+                            {record.title}
+                        </li>
+                    )} 
+                </ol>
+            </div>
         )
     } else {
         if(search.length === 0) {
