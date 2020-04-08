@@ -3,6 +3,7 @@ import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import MovieDetail from './MovieDetail';
 import { movieDB } from '../configs/config';
+import movieFlexLogo from '../assets/logo_transparent.png'
 
 const MOVIE_LIST_QUERY = `${movieDB.url}3/search/movie?api_key=${movieDB.apiKey}&page=1&include_adult=${movieDB.showAdult}`; 
 const MOVIE_DETAIL_QUERY = `${movieDB.url}3/movie/`;
@@ -10,22 +11,66 @@ const MOVIE_DETAIL_QUERY = `${movieDB.url}3/movie/`;
 const App = () => {
     
     const [searchTerm, setSearchTerm] = useState('');
-    const [movieSelectedId, setMovieSelectedId] = useState('')
+    const [movieSelectedId, setMovieSelectedId] = useState('');
     
     return (
-        <div>
-            <SearchBar searchText={(searchText) => setSearchTerm(searchText)}/>
-            <MovieList 
-                queryRequest={`${MOVIE_LIST_QUERY}&query=${searchTerm}`} 
-                search={searchTerm} 
-                movieSelectedId={(movieSelectedId) => setMovieSelectedId(movieSelectedId)}
-            />
-            <MovieDetail 
-                queryRequest={`${MOVIE_DETAIL_QUERY}${movieSelectedId}?api_key=${movieDB.apiKey}`} 
-                search={movieSelectedId}
-            />
+        <div style={styles.appContainer}>
+            <div style={styles.searchBarLogoContainerStyle}>
+                <img src={movieFlexLogo} style={styles.logoStyle}/>
+                <SearchBar searchText={(searchText) => setSearchTerm(searchText)}/>
+            </div>
+            <div style={styles.movieListDetailsContainerStyle}>
+                <div style={styles.movieListContainerStyle}>
+                    <MovieList 
+                        queryRequest={`${MOVIE_LIST_QUERY}&query=${searchTerm}`} 
+                        search={searchTerm} 
+                        movieSelectedId={(movieSelectedId) => setMovieSelectedId(movieSelectedId)}
+                    />
+                </div>
+                <div style={styles.movieDetailContainerStyle}>
+                    <MovieDetail 
+                        queryRequest={`${MOVIE_DETAIL_QUERY}${movieSelectedId}?api_key=${movieDB.apiKey}`} 
+                        search={movieSelectedId}
+                    />
+                </div>
+            </div>
         </div>
     )
+}
+
+const styles = {
+    appContainerStyle: {
+        flex: 3 
+    },
+    searchBarLogoContainerStyle:{
+        flex: 1
+    },
+    logoStyle: {
+        width: '250px', 
+        height: '70px', 
+        marginBottom: '3em' 
+    },
+    movieListDetailsContainerStyle: {
+        marginTop: 20, 
+        flex: 2, 
+        display: 'flex', 
+        direction: 'row', 
+        flex: 5, 
+        height: '100%'
+    },
+    movieListContainerStyle: {
+        alignItems: 'center', 
+        flex: 3.5, 
+        boxShadow: '2px 2px 26px -4px rgba(66,66,66,0.75)', 
+        padding: '1em' 
+    },
+    movieDetailContainerStyle: {
+        marginLeft: 10, 
+        flex: 1.5, 
+        justifyContent: 'center', 
+        boxShadow: '2px 2px 26px -4px rgba(66,66,66,0.75)', 
+        padding: '1em'
+    }
 }
 
 export default App;
