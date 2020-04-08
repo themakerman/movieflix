@@ -25,13 +25,14 @@ const styles = {
         'borderRadius': "18px",
         'borderWidth': '1px solid',
         'padding': "10px",
-        'width': "300px",
+        'width': "500px",
         "boxShadow": '2px 2px 26px -4px rgba(247,63,82,0.10)',
         'height': "20px",
         "outline":'none',
         'color': '#F73F52',
         'borderColor': '#F73F52'
     }
+    
 }
 
 export default SearchBar;

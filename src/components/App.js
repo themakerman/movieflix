@@ -62,7 +62,8 @@ const styles = {
         alignItems: 'center', 
         flex: 3.5, 
         boxShadow: '2px 2px 26px -4px rgba(66,66,66,0.75)', 
-        padding: '1em' 
+        padding: '1em',
+        border: '1px solid orange' 
     },
     movieDetailContainerStyle: {
         marginLeft: 10, 

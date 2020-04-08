@@ -6,23 +6,21 @@ const MovieList = ({ queryRequest, search, movieSelectedId }) => {
     const resources = useResources(queryRequest);
     if(resources.length>1) {
         return (
-            <div>
-                <ol>
-                    {resources.map((record) => 
-                        <li 
-                            style={styles.listStyle}
-                            onClick={(e) => movieSelectedId(e.target.dataset['item'])} 
-                            key={record.id} data-item={record.id}
-                        >
-                            <div style={styles.listItemStyle}>
-                                <img src={getPosterFullUrl(record.poster_path)} alt={"No Image found"} style={styles.listPosterStyle}/>
-                                <p><strong>{record.title}</strong> ({new Date(record.release_date).getFullYear() || 'No Year'})</p>
-                            </div>
-                            
-                        </li>
-                    )} 
-                </ol>
-            </div>
+            <ol style={styles.listContainerStyle}>
+                {resources.map((record) => 
+                    <li 
+                        style={styles.listStyle}
+                        onClick={(e) => movieSelectedId(e.currentTarget.dataset['id'])} 
+                        key={record.id} data-id={record.id}
+                    >
+                        <div style={styles.listItemStyle}>
+                            <img src={getPosterFullUrl(record.poster_path)} alt={"No Image found"} style={styles.listPosterStyle}/>
+                            <p><strong>{record.title}</strong> ({new Date(record.release_date).getFullYear() || 'No Year'})</p>
+                        </div>
+                        
+                    </li>
+                )} 
+            </ol>
         )
     } else {
         if(search.length === 0) {
@@ -48,15 +46,18 @@ function getPosterFullUrl(posterPath) {
 
 const styles = {
     listStyle: {
-        'borderWidth': '2px',
         'padding': "25px",
-        'width': "20%",
+        'width': "180px",
         "boxShadow": '2px 2px 26px -4px rgba(66,66,66,0.30)',
-        'height': "5%",
+        'height': "180px",
         "outline":'none',
         "marginBottom": '1em',
         "cursor": 'pointer',
-        'listStyleType': 'none'
+        'listStyleType': 'none',
+    },
+    listContainerStyle: {
+         columnCount: 4, 
+         border: '1px solid green'
     },
     listItemStyle: {
         display: 'flex',
