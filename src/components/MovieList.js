@@ -56,8 +56,7 @@ const styles = {
         'listStyleType': 'none',
     },
     listContainerStyle: {
-         columnCount: 4, 
-         border: '1px solid green'
+        columnCount: 4
     },
     listItemStyle: {
         display: 'flex',
