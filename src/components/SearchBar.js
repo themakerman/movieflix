@@ -1,7 +1,7 @@
 import React from 'react';
 
 /**
- * My Search Bar Component
+ * Search Bar Component
  * @param {SearchBarProps} props 
  */
 const SearchBar = (props) => {

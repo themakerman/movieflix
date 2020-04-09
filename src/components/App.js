@@ -8,6 +8,9 @@ import movieFlexLogo from '../assets/logo_transparent.png'
 const MOVIE_LIST_QUERY = `${movieDB.url}3/search/movie?api_key=${movieDB.apiKey}&page=1&include_adult=${movieDB.showAdult}`; 
 const MOVIE_DETAIL_QUERY = `${movieDB.url}3/movie/`;
 
+/**
+ * App Component
+ */
 const App = () => {
     
     const [searchTerm, setSearchTerm] = useState('');

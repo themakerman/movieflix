@@ -2,11 +2,15 @@ import React from 'react';
 import { useResources } from './useResources';
 import { movieDB } from '../configs/config';
 
-
-const MovieDetail = ({ queryRequest, search }) => {
+/**
+ * Movie Detail Component
+ * @param {MovieDetailProps} props 
+ */
+const MovieDetail = (props) => {
+    let { queryRequest, search } = props;
     const movieDetail = useResources(queryRequest);
     const imageUrl = `${movieDB.imageUrl}${movieDetail.poster_path}`;
-    console.log(imageUrl);
+    
     if(Object.keys(movieDetail).length<1) {
         return (
             <h3 style={styles.paragraphBoldStyle}>Nothing to show...</h3>
@@ -44,3 +48,8 @@ const styles={
 }
 
 export default MovieDetail;
+/**
+ * @typedef MovieDetailProps
+ * @property {string} queryRequest 
+ * @property {string} search 
+ */

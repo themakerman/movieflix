@@ -2,7 +2,12 @@ import React from 'react';
 import { useResources } from './useResources';
 import { movieDB } from '../configs/config';
 
-const MovieList = ({ queryRequest, search, movieSelectedId }) => {
+/**
+ * Movie List Component
+ * @param {MovieListProps} props 
+ */
+const MovieList = (props) => {
+    let { queryRequest, search, movieSelectedId } = props;
     const resources = useResources(queryRequest);
     if(resources.length>1) {
         return (
@@ -75,3 +80,9 @@ const styles = {
 }
 
 export default MovieList;
+/**
+ * @typedef MovieListProps
+ * @property {string} queryRequest 
+ * @property {string} search 
+ * @property {callback} movieSelectedId 
+ */
